@@ -1,0 +1,15 @@
+body {
+  font-size: 20px;
+  font: 'Arial';
+}
+@media (max-width: 1300px) {
+  body {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 1600px) {
+  body {
+    font-size: 15px;
+  }
+}
