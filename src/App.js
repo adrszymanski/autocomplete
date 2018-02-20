@@ -31,7 +31,7 @@ class App extends Component {
     /*
     Event on starting Component, fetching countries data from API.
     */
-    componentWillMount() {
+    componentDidMount() {
       const countriesURL = 'https://restcountries.eu/rest/v2/all';
       const countries = [];
       fetch(countriesURL)
