@@ -42,6 +42,7 @@ class App extends Component {
             return {name: country.name, code: country.alpha2Code, value: `${country.name} (${country.alpha2Code})`};
           });
           this.allItems = filteredData;
+
           this.setState({isDataLoading: false})
         })
         .catch(error => {

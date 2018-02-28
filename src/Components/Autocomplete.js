@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import AutocompleteItem from './AutocompleteItem';
 import './Autocomplete.css';
-
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { inputChanged } from '../actions/input-changed';
 /**
 <--- Autocomplete control --->
   Props required:
@@ -73,8 +75,9 @@ class Autocomplete extends Component {
     }
 
     handleChange(event) {
-        this.setState({value: event.target.value})
-        this.findMatchedItems(event.target.value);
+        // this.setState({value: event.target.value})
+        // this.findMatchedItems(event.target.value);
+        this.props.inputChanged(event.target.value);
     }
 
     handleFocusOut(event) {
@@ -117,5 +120,14 @@ class Autocomplete extends Component {
       this.currentElement = event.target.nodeName;
     }
 };
+function matchDispatchToProps(dispatch) {
+  return bindActionCreators({inputChanged: inputChanged}, dispatch);
+}
 
-export default Autocomplete;
+function mapStateToProps(state) {
+  return {
+    countries: state.countries
+  }
+}
+
+export default connect(mapStateToProps)(Autocomplete);
